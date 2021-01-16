@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mynotes.css">
+    <link rel="stylesheet" href="/font/CircularStd-Book/style.css" type="text/css">
+    <link rel="shortcut icon" href="/img/group 27.png">
+    <title>My notes</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrap">
+            <div class="nav-img-wrap">
+                <div class="nav-img">
+                    <a href="/notes"><img class="logout-img" src="../img/arrow-back.png"></a>
+                    <img class= "profile-img" src="../img/Group 59.png">
+                </div>
+            </div>
+            <div class="ul-wrap">
+                <ul>
+                    <li><a href="#" class="home">Home</a></li>
+                    <li><a href="#">ChatBot</a></li>
+                    <li><a href="#">Connections</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-wrap">
+        <div class="container">
+            <h2>My notes</h2>
+            <div class="posts-container">
+                <%  notes.forEach(note => { %>
+                    <% if (note.userid == user._id) { %>
+                    <div class = "postsHolder">
+                        <div class="user">
+                            <img class="post-img" src="../img/Group 59.png">
+                            <h4 class="username"><%= user.username %></h4>
+                            <a href="/notes/edit/<%= note.id %>"><img class="edit" src="../img/622400-64.png"></a>
+                            <form action="/notes/<%= note.id %>?_method=DELETE" method = "POST">
+                                <button type="submit" class="btn del-btn">Delete</button>
+                            </form>
+                        </div>          
+                        <!-- <h3><%= note.title %></h3> -->
+                        <div class="created"><%= note.createdAt.toLocaleDateString() %></div>
+                        <p class="post-content"><%= note.content %></p>
+                    </div>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>        
+        <a href="/notes/new"><img class="new" src="../img/Group 31.png"></a>  
+    </div>
+    <div class="confirm-del hide">
+        <div class="text-wrap">
+            <h1>Delete note?</h1>
+            <!-- <p>Making your thoughts public will create a new public post which will be visible to everyone</p> -->
+            <p>Deleting a note will permanently remove it. This action can't be undone.</p>
+            <div class="btn-wrap">
+                <a class= "btn delete" href="#">Delete</a>
+                <a class= "btn cancel" href="#">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

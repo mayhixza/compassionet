@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/posts.css" type="text/css">
+    <!-- <link rel="stylesheet" href="/webfontkit-20210115-074321/stylesheet.css" type="text/css"> -->
+    <link rel="stylesheet" href="font/CircularStd-Book/style.css" type="text/css">
+    <link rel="stylesheet" href="font/CircularStd-Medium/style.css" type="text/css">
+    <link rel="shortcut icon" href="img/group 27.png">
+    <title>Posts</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrap">
+            <div class="nav-img-wrap">
+                <div class="nav-img">
+                    <a href="/logout"><img class="logout-img" src="img/log-out.png"></a>
+                    <img class= "profile-img" src="img/Group 59.png">
+                    <div class="wrap hide">
+                        <div class="userProfile">
+                            <!-- <div class="aa-wrap"> -->
+                                <!-- <img class= "aa" src="img/Group 59.png"> -->
+                            <!-- </div> -->
+                            <!-- <p><%= confirm %></p> -->
+                            <a class= "aa" href="/notes/mynotes">My Notes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ul-wrap">
+                <ul>
+                    <li><a href="#" class="home">Home</a></li>
+                    <li><a href="#">ChatBot</a></li>
+                    <li><a href="#">Connections</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-wrap">
+        <div class="container">
+            <h2>Need to vent?</h2>
+            <input type="text" id="search" name="search" placeholder="Search">
+            <div class="posts-container">
+                <%  notes.forEach(note => { %>
+                    <div class = "postsHolder">
+                        <div class="user">
+                            <img class="post-img" src="img/Group 59.png">
+                            <%  users.forEach(user => { %>
+                                <% if (note.userid == user._id) { %>
+                                <h4 class="username"><%= user.username %></h4>
+                                <% } %>
+                            <% }) %>       
+                        </div>          
+                        <!-- <h3><%= note.title %></h3> -->
+                        <!-- <div><%= note.createdAt.toLocaleDateString() %></div> -->
+                        <p class="post-content"><%= note.content %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>        
+        <a href="/notes/new"><img class="new" src="img/Group 31.png"></a>  
+    </div>
+    <script>
+        let profileImg = document.querySelector('img.profile-img');
+        profileImg.onclick = display = () => {
+            let wrap = document.querySelector('div.wrap');
+            wrap.classList.toggle('hide');
+        }
+    </script>
+</body>
+</html>

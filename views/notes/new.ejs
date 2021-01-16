@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/new.css">
+    <link rel="stylesheet" href="/font/CircularStd-Book/style.css" type="text/css">
+    <link rel="shortcut icon" href="/img/group 27.png">
+    <title>New</title>
+</head>
+<body>    
+    <div class="bgcolor hide"></div>
+    <nav>
+        <div class="nav-wrap">
+            <a href="/notes"><img class="back" src="../img/arrow-back.png"></a>
+            <h2 class="create-post">Create post</h2>
+        </div>
+    </nav>
+    <div class="container-wrap">
+        <div class="container">
+            <h1 class="username">Hey, <%= username %></h1>
+            <h2 class="ques">how're you feeling today?</h2>
+            <form action="/notes/new" method="POST">
+                <!-- <label for="title">title: </label>    -->
+                <!-- <input type="text" id="title" name="title"> <br> -->
+
+                <!-- <label for="content">content: </label> -->
+                <div class="form">
+                    <textarea type="text" id="content" name="content" placeholder="Type your thoughts..." required></textarea>
+                </div>
+                <!-- <button type="submit" class="post">Post</button> -->
+                <a class= "btn yes" href="#">Post</a>
+                <div class="prompt hide">
+                    <div class="text-wrap">
+                        <h1>Make thoughts public?</h1>
+                        <p>Making your thoughts public will create a new public post which will be visible to everyone</p>
+                        <!-- <a class= "btn yes" href="#">Yes</a> -->
+                        <button type="submit" class="btn post">Yes</button>
+                        <a class= "btn cancel" href="#">Cancel</a>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+    <div class="bgcolor hide"></div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
