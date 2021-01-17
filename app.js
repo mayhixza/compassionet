@@ -60,7 +60,7 @@ app.post("/signup", async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: hashedPass
-    })
+    });
 
     // const user = await User.findOne({username: req.body.username})
     const emailExists= await User.findOne({email: req.body.email});
@@ -77,9 +77,9 @@ app.post("/signup", async (req, res) => {
 
     try{
         await user.save();
-        let token = jwt.sign({id:user._id},process.env.JWT_SECRET);
-        res.cookie("verify",token);
-        console.log(token)
+        // let token = jwt.sign({id:user._id},process.env.JWT_SECRET);
+        // res.cookie("verify",token);
+        // console.log(token)
         return res.redirect("/");
     }catch(err){
         console.log(err)
